@@ -1,6 +1,5 @@
 :root {
   --primary-clr: #5a4ca1;
-  /* --primary-clr: black; */
 }
 * {
   margin: 0;
@@ -18,20 +17,24 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 15px;
 }
 .wrapper {
   width: 900px;
+  border-radius: 20px;
+  background-color: var(--primary-clr);
+  padding: 5px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 /*-------- NAV ---------*/
 nav {
-  /* border: 1px solid red; */
   display: flex;
   justify-content: space-between;
 }
 nav div,
 nav a {
-  border: 1px solid red;
+  /* border: 1px solid red; */
   position: relative;
   width: 100%;
   padding: 10px;
@@ -40,7 +43,12 @@ nav a {
   text-decoration: none;
   cursor: pointer;
   background-color: var(--primary-clr);
-  border: 1px solid var(--primary-clr);
+}
+nav div:first-child {
+  border-top-left-radius: 20px;
+}
+nav div:last-child {
+  border-top-right-radius: 20px;
 }
 nav div.active {
   background-color: #fff;
@@ -66,8 +74,8 @@ nav div.active::before {
   padding: 25px;
   display: none;
   background-color: #fff;
-  border: 1px solid var(--primary-clr);
-  /* border: 1px solid red; */
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
 }
 .container.active {
   display: flex;
@@ -494,10 +502,19 @@ nav div.active::before {
 @media (max-width: 768px) {
   body {
     align-items: flex-start;
+    padding: 0;
   }
-  /* nav {
-    flex-direction: column;
-  } */
+  .wrapper {
+    padding: 0;
+    padding-top: 5px;
+  }
+  .wrapper,
+  .container,
+  nav div:first-child,
+  nav div:last-child {
+    border-radius: 0;
+  }
+
   .container {
     flex-direction: column;
     align-items: center;
