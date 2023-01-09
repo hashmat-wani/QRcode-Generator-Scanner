@@ -547,16 +547,30 @@ nav div.active::before {
   .container .right {
     width: 100%;
   }
-  #scanner-container .left {
-    border: 1px solid red;
-  }
-  .dropzone {
+  #scanner-container {
+    position: absolute;
+    top: 0;
     height: 100vh;
-    width: 100%;
+    width: 100vw;
+    padding: 0;
   }
-
+  #scanner-container .left {
+    /* border: 1px solid red; */
+  }
   #scanner-container .right {
     display: none;
+  }
+  .heading {
+    display: none;
+  }
+  .dropzone {
+    border: none;
+    /* position: absolute; */
+    /* top: 0; */
+    /* right: 0; */
+    width: 100vw;
+    /* padding: 0; */
+    height: 100vh;
   }
 
   .fa-arrow-right-arrow-left {
