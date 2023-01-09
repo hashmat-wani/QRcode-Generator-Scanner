@@ -357,6 +357,29 @@ document.getElementById("open").addEventListener("click", () => {
 
 const html5QrCode = new Html5Qrcode("reader");
 function scan() {
+  // let cameraId;
+  // This method will trigger user permissions
+  Html5Qrcode.getCameras()
+    .then((devices) => {
+      /**
+       * devices would be an array of objects of type:
+       * { id: "id", label: "label" }
+       */
+      if (devices && devices.length) {
+        console.log(devices);
+        let cameraId = devices[1].id;
+        // .. use this to start scanning.
+        html5QrCode.start(
+          { deviceId: { exact: cameraId } },
+          config,
+          qrCodeSuccessCallback
+        );
+      }
+    })
+    .catch((err) => {
+      // handle err
+    });
+
   const qrCodeSuccessCallback = (decodedText, decodedResult) => {
     /* handle success */
     handleScanSuccess(decodedText);
@@ -384,6 +407,7 @@ function scan() {
   let height = +document.getElementById("reader").clientHeight;
   console.log(width, height);
   let as = width / height;
+  console.log(as);
   // const config = {
   //   fps: 10,
   //   qrbox: { width: width - 100, height: height - 300 },
@@ -407,16 +431,16 @@ function scan() {
   // }
   const config = {
     fps: 10,
-    // qrbox: { width: 250, height: 250 },
+    qrbox: { width: 250, height: 250 },
     aspectRatio: as,
   };
 
   // prefering back camera
-  html5QrCode.start(
-    { facingMode: "environment" },
-    config,
-    qrCodeSuccessCallback
-  );
+  // html5QrCode.start(
+  //   { facingMode: "environment" },
+  //   config,
+  //   qrCodeSuccessCallback
+  // );
 }
 
 const cameraAccess = document.querySelector(".fa-camera");
