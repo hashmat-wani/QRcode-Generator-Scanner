@@ -5,7 +5,7 @@
 .mobile-result {
   /* border: 1px solid blue; */
   display: none;
-  height: max(100vw, 100vh);
+  height: max(100vw, calc(100vh - 50px));
   width: 100%;
   z-index: 100;
   background: #fff;
