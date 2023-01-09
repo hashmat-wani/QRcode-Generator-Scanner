@@ -1,10 +1,12 @@
 let bodyWidth = document.querySelector("body").clientWidth;
 let mobileView = bodyWidth > 768 ? false : true;
 
+let isScanning = false;
+
 const resultPopUp = document.querySelector(".mobile-result");
 const resultPopUpText = document.querySelector(".mobile-result .result-text");
 
-document.querySelector(".fa-times").addEventListener("click", () => {
+document.querySelector(".fa-arrow-left-long").addEventListener("click", () => {
   resultPopUp.classList.remove("show");
 });
 
@@ -19,7 +21,7 @@ navItems.forEach((item) => {
       item.classList.remove("active");
     });
     // add active to clickedone
-    item.classList.toggle("active");
+    item.classList.add("active");
 
     // same with containers
     containers.forEach((item) => {
@@ -28,6 +30,18 @@ navItems.forEach((item) => {
 
     document.querySelector(`#${item.id}-container`).classList.add("active");
   });
+});
+
+document.querySelector("#scanner").addEventListener("click", (e) => {
+  if (mobileView) {
+    startCamera(e);
+    isScanning = true;
+  }
+});
+
+document.querySelector("#generator").addEventListener("click", (e) => {
+  isScanning && html5QrCode.stop();
+  isScanning = false;
 });
 
 const customPicker = document.querySelectorAll(".custom-picker");
@@ -328,7 +342,6 @@ function fetchRequest(file, formData) {
       updateThumbnail(file);
     })
     .catch((err) => {
-      console.log(err);
       reset();
       dropZoneText.innerHTML = "Couldn't scan QR Code";
     });
@@ -390,6 +403,7 @@ document.querySelectorAll(".open").forEach((el, idx) => {
 
 const html5QrCode = new Html5Qrcode("reader");
 function scan() {
+  isScanning = true;
   const qrCodeSuccessCallback = (decodedText, decodedResult) => {
     /* handle success */
     let beep = new Audio("./scan-beep.wav");
@@ -398,13 +412,14 @@ function scan() {
     navigator.vibrate(80);
     if (mobileView) {
       resultPopUp.classList.add("show");
-      resultPopUpText.textContent = result;
+      resultPopUpText.textContent = decodedText;
     } else handleScanSuccess(decodedText);
 
     html5QrCode
       .stop()
       .then((ignore) => {
         // QR Code scanning is stopped.
+        isScanning = false;
         dropZone.style.height = "350px";
         dropZone.style.border = "2px dashed #5a4ca1";
         // qrCodeContent.classList.remove("show");
@@ -439,7 +454,9 @@ const galleryAccess = document.querySelector(".fa-images");
 const closeScan = document.querySelector(".fa-xmark");
 const scannerOptions = document.querySelector(".scanner-options");
 
-cameraAccess.addEventListener("click", (e) => {
+cameraAccess.addEventListener("click", startCamera);
+
+function startCamera(e) {
   e.preventDefault();
   e.stopPropagation();
   if (!mobileView) dropZone.style.height = "450px";
@@ -455,17 +472,17 @@ cameraAccess.addEventListener("click", (e) => {
   resultTextArea.innerText = "";
   cameraAccess.classList.remove("show");
   scannerOptions.classList.add("show");
-});
+}
 
-galleryAccess.addEventListener("click", (e) => browseImage(e, true));
+galleryAccess.addEventListener("click", browseImage);
 
 closeScan.addEventListener("click", quitScan);
 
-function browseImage(e, isScanning = false) {
-  isScanning && html5QrCode.stop();
-
+function browseImage(e) {
   let file = e?.target?.files[0];
   if (!file) return;
+  isScanning && html5QrCode.stop();
+  isScanning = false;
   let formData = new FormData();
   formData.append("file", file);
   fetchRequest(file, formData);
@@ -480,8 +497,7 @@ function quitScan(e) {
   e.preventDefault();
   e.stopPropagation();
   html5QrCode.stop().then((ignore) => {
+    isScanning = false;
     reset();
   });
 }
-
-console.log(document.querySelector("body").clientWidth);
