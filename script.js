@@ -245,13 +245,6 @@ const dropZone = document.querySelector(".dropzone"),
   img = dropZone.querySelector("img"),
   scanReader = document.getElementById("reader");
 
-// qrCodeContent = dropZone.querySelector(".qr-code-content");
-
-// qrCodeContent.addEventListener("click", (e) => {
-//   e.preventDefault();
-//   e.stopPropagation();
-// });
-
 scanReader.addEventListener("click", (e) => {
   e.preventDefault();
   e.stopPropagation();
@@ -365,7 +358,6 @@ function reset() {
 // updateThumbnail
 function updateThumbnail(file) {
   dropZone.style.border = "none";
-  // qrCodeContent.classList.remove("show");
   scanReader.classList.remove("show");
   dropZone.style.height = "400px";
   scannerOptions.classList.remove("show");
@@ -403,7 +395,6 @@ document.querySelectorAll(".open").forEach((el, idx) => {
 
 const html5QrCode = new Html5Qrcode("reader");
 function scan() {
-  // console.log(dropZone.clientHeight, dropZone.clientWidth);
   isScanning = true;
   const qrCodeSuccessCallback = (decodedText, decodedResult) => {
     /* handle success */
@@ -423,7 +414,6 @@ function scan() {
         isScanning = false;
         dropZone.style.height = "350px";
         dropZone.style.border = "2px dashed #5a4ca1";
-        // qrCodeContent.classList.remove("show");
         scanReader.classList.remove("show");
         content.classList.add("show");
         cameraAccess.classList.add("show");
@@ -461,14 +451,13 @@ function startCamera(e) {
   e.stopPropagation();
   dropZone.style.height = "450px";
   dropZone.style.border = "none";
+  scanReader.classList.add("show");
+  scanReader.style.width = "100%";
+  scanReader.style.height = "100%";
   scan();
   img.src = "";
   img.classList.remove("show");
   content.classList.remove("show");
-  // qrCodeContent.classList.add("show");
-  scanReader.classList.add("show");
-  scanReader.style.width = "100%";
-  scanReader.style.height = "100%";
   resultTextArea.innerText = "";
   cameraAccess.classList.remove("show");
   scannerOptions.classList.add("show");

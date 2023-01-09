@@ -3,9 +3,9 @@
 }
 
 .mobile-result {
-  border: 1px solid blue;
+  /* border: 1px solid blue; */
   display: none;
-  height: max(100vw, calc(100vh - 70px));
+  height: max(100vw, 100vh);
   width: 100%;
   z-index: 100;
   background: #fff;
@@ -95,7 +95,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 15px;
+  /* padding: 15px; */
 }
 .wrapper {
   width: 900px;
@@ -644,14 +644,14 @@ nav div.active::before {
     align-items: center;
   }
   .container .left {
-    border: 1px solid red;
-    min-height: calc(100vh - 65px);
+    /* border: 1px solid red; */
     width: 100%;
   }
   .container .right {
     width: 100%;
   }
   #scanner-container {
+    min-height: calc(100vh - 45px);
     padding: 20px 0 0;
   }
   #scanner-container .right {
