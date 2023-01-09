@@ -580,10 +580,10 @@ nav div.active::before {
   display: block;
 } */
 
-/* #reader {
+#reader {
   width: 100%;
   height: 100%;
-} */
+}
 
 .browsing-option {
   display: flex;
