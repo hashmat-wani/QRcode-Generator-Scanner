@@ -467,6 +467,7 @@ nav div.active::before {
   border: 1px solid red;
 } */
 .result {
+  /* border: 1px solid red; */
   position: relative;
 }
 .result textarea {
@@ -542,6 +543,16 @@ nav div.active::before {
   .qr-code canvas {
     width: 200px;
     height: 200px;
+  }
+  .dropzone {
+    width: 100%;
+    border: none;
+  }
+  .result {
+    width: 100%;
+  }
+  .result textarea {
+    width: 100%;
   }
 }
 
