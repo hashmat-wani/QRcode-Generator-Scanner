@@ -403,6 +403,7 @@ document.querySelectorAll(".open").forEach((el, idx) => {
 
 const html5QrCode = new Html5Qrcode("reader");
 function scan() {
+  console.log(dropZone.clientHeight, dropZone.clientWidth);
   isScanning = true;
   const qrCodeSuccessCallback = (decodedText, decodedResult) => {
     /* handle success */
@@ -459,7 +460,7 @@ cameraAccess.addEventListener("click", startCamera);
 function startCamera(e) {
   e.preventDefault();
   e.stopPropagation();
-  if (!mobileView) dropZone.style.height = "450px";
+  dropZone.style.height = "450px";
   dropZone.style.border = "none";
   scan();
   img.src = "";
