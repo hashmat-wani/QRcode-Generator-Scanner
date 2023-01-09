@@ -370,7 +370,8 @@ function scan() {
   let mobileView = bodyWidth > 768 ? false : true;
   const qrCodeSuccessCallback = (decodedText, decodedResult) => {
     /* handle success */
-    navigator.vibrate([50, 10, 50]);
+    new Audio("./scan-beep.wav");
+    navigator.vibrate(100);
     // if (mobileView) {
     //   // alert(decodedText);
     // } else
