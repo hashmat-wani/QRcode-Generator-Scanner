@@ -575,16 +575,15 @@ nav div.active::before {
 
 /* .qr-code-content {
   display: none;
-  position: relative;
-}
-.qr-code-content.show {
+} */
+/* .qr-code-content.show {
   display: block;
 } */
 
-#reader {
-  /* width: 350px; */
-  height: 450px;
-}
+/* #reader {
+  width: 100%;
+  height: 100%;
+} */
 
 .browsing-option {
   display: flex;
@@ -598,6 +597,10 @@ nav div.active::before {
 .fa-camera {
   color: var(--primary-clr);
   display: none;
+}
+
+.fa-camera.show {
+  display: block;
 }
 .scanner-options {
   color: #fff;

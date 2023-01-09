@@ -219,7 +219,7 @@ const dropZone = document.querySelector(".dropzone"),
   dropZoneText = document.querySelector(".dropzone .text"),
   content = dropZone.querySelector(".content"),
   img = dropZone.querySelector("img");
-//   qrCodeContent = dropZone.querySelector(".qr-code-content");
+// qrCodeContent = dropZone.querySelector(".qr-code-content");
 
 // qrCodeContent.addEventListener("click", (e) => {
 //   e.preventDefault();
@@ -382,7 +382,7 @@ function scan() {
 
   // let width = +document.querySelector(".mobile-scanner").clientWidth;
   // let height = +document.querySelector(".mobile-scanner").clientHeight;
-  // console.log(width, height);
+  console.log(width, height);
   // const config = {
   //   fps: 10,
   //   qrbox: { width: width - 100, height: height - 300 },
