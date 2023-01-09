@@ -325,7 +325,6 @@ function fetchRequest(file, formData) {
 function reset() {
   dropZone.style.border = "2px dashed #5a4ca1";
   document.querySelector("#result-btns").classList.remove("active");
-
   scanReader.classList.remove("show");
   img.src = "";
   img.classList.remove("show");
@@ -340,7 +339,6 @@ function reset() {
 function updateThumbnail(file) {
   dropZone.style.border = "none";
   // qrCodeContent.classList.remove("show");
-
   scanReader.classList.remove("show");
   dropZone.style.height = "400px";
   scannerOptions.classList.remove("show");
@@ -368,49 +366,31 @@ document.getElementById("open").addEventListener("click", () => {
 
 const html5QrCode = new Html5Qrcode("reader");
 function scan() {
-  // This method will trigger user permissions
-  // Html5Qrcode.getCameras()
-  //   .then((devices) => {
-  //     /**
-  //      * devices would be an array of objects of type:
-  //      * { id: "id", label: "label" }
-  //      */
-  //     if (devices && devices.length) {
-  //       console.log(devices);
-  //       let cameraId = devices[1].id;
-  //       // .. use this to start scanning.
-  //       html5QrCode.start(
-  //         { deviceId: { exact: cameraId } },
-  //         config,
-  //         qrCodeSuccessCallback
-  //       );
-  //     }
-  //   })
-  //   .catch((err) => {
-  //     // handle err
-  //   });
-
+  let bodyWidth = document.querySelector("body").clientWidth;
+  let mobileView = bodyWidth > 768 ? false : true;
   const qrCodeSuccessCallback = (decodedText, decodedResult) => {
     /* handle success */
-    handleScanSuccess(decodedText);
+    if (mobileView) alert(decodedText);
+    else handleScanSuccess(decodedText);
     html5QrCode
       .stop()
       .then((ignore) => {
+        // QR Code scanning is stopped.
+        dropZone.style.border = "2px dashed #5a4ca1";
         dropZone.style.height = "350px";
+        dropZone.style.border = "2px dashed #5a4ca1";
         // qrCodeContent.classList.remove("show");
         scanReader.classList.remove("show");
         content.classList.add("show");
         cameraAccess.classList.add("show");
         scannerOptions.classList.remove("show");
-        // QR Code scanning is stopped.
       })
       .catch((err) => {
         // console.log(err);
         // Stop failed, handle it.
       });
   };
-  let bodyWidth = document.querySelector("body").clientWidth;
-  let mobileView = bodyWidth > 768 ? false : true;
+
   const config = {
     fps: 10,
     qrbox: { width: 250, height: 250 },
