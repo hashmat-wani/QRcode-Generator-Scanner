@@ -371,7 +371,7 @@ function scan() {
   const qrCodeSuccessCallback = (decodedText, decodedResult) => {
     /* handle success */
     let beep = new Audio("./scan-beep.wav");
-    beep.volume = 0.1;
+    beep.volume = 0.05;
     beep.play();
     navigator.vibrate(80);
     // if (mobileView) {
