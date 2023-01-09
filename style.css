@@ -542,11 +542,9 @@ nav div.active::before {
   }
   .container .left {
     width: 100%;
-    min-width: 500px;
   }
   .container .right {
     width: 100%;
-    min-width: 500px;
   }
 
   .qr-code {

@@ -463,7 +463,6 @@ function browseImage(e, isScanning = false) {
 }
 
 function handleScanSuccess(decodedText) {
-  // console.log(decodedText);
   resultTextArea.innerHTML = decodedText;
   document.querySelector("#result-btns").classList.add("active");
 }
