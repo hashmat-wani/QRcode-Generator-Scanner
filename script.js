@@ -390,20 +390,25 @@ function scan() {
   // };
   let bodyWidth = document.querySelector("body").clientWidth;
   let mobileView = bodyWidth > 768 ? false : true;
-  let config;
-  if (mobileView) {
-    config = {
-      fps: 10,
-      qrbox: { width: 250, height: 250 },
-      aspectRatio: 1,
-    };
-  } else {
-    config = {
-      fps: 10,
-      qrbox: { width: 250, height: 250 },
-      aspectRatio: 350 / 450,
-    };
-  }
+  // let config;
+  // if (mobileView) {
+  //   config = {
+  //     fps: 10,
+  //     qrbox: { width: 250, height: 250 },
+  //     aspectRatio: 1,
+  //   };
+  // } else {
+  //   config = {
+  //     fps: 10,
+  //     qrbox: { width: 250, height: 250 },
+  //     aspectRatio: 350 / 450,
+  //   };
+  // }
+  const config = {
+    fps: 10,
+    qrbox: { width: 250, height: 250 },
+    aspectRatio: 350 / 450,
+  };
 
   // prefering back camera
   html5QrCode.start(
