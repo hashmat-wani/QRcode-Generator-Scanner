@@ -407,7 +407,7 @@ function scan() {
   // }
   const config = {
     fps: 10,
-    qrbox: { width: 250, height: 250 },
+    // qrbox: { width: 250, height: 250 },
     aspectRatio: as,
   };
 
