@@ -470,6 +470,8 @@ cameraAccess.addEventListener("click", (e) => {
   content.classList.remove("show");
   // qrCodeContent.classList.add("show");
   scanReader.classList.add("show");
+  scanReader.style.width = "350px";
+  scanReader.style.height = "450px";
   resultTextArea.innerText = "";
   cameraAccess.classList.remove("show");
   scannerOptions.classList.add("show");
