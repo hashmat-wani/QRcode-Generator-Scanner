@@ -403,7 +403,7 @@ function scan() {
     fps: 10,
     qrbox: { width: 250, height: 250 },
     // aspectRatio: mobileView ? 450 / 350 : 350 / 450,
-    aspectRatio: dropZone.clientWidth / dropZone.clientHeight,
+    aspectRatio: dropZone.clientHeight / dropZone.clientWidth,
   };
 
   // prefering back camera
