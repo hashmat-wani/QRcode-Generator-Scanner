@@ -2,11 +2,11 @@
   --primary-clr: #5a4ca1;
 }
 
-.mobile-scanner {
+/* .mobile-scanner {
   width: 100vw;
   height: 100vh;
   border: 1px solid red;
-}
+} */
 
 * {
   margin: 0;
@@ -576,8 +576,8 @@ nav div.active::before {
 }
 
 #reader {
-  /* width: 100%; */
-  /* height: 100%; */
+  width: 100%;
+  height: 100vh;
 }
 
 .browsing-option {
