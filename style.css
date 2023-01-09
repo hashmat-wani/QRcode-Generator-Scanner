@@ -1,6 +1,13 @@
 :root {
   --primary-clr: #5a4ca1;
 }
+
+.mobile-scanner {
+  width: 100vw;
+  height: 100vh;
+  border: 1px solid red;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -15,11 +22,13 @@ body {
   min-height: 100vh;
   background: #f5f5f5;
   display: flex;
+
   align-items: center;
   justify-content: center;
   padding: 15px;
 }
 .wrapper {
+  display: none;
   width: 900px;
   border-radius: 20px;
   background-color: var(--primary-clr);
@@ -567,8 +576,8 @@ nav div.active::before {
 }
 
 #reader {
-  width: 100%;
-  height: 100%;
+  /* width: 100%; */
+  /* height: 100%; */
 }
 
 .browsing-option {

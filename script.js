@@ -375,14 +375,17 @@ function scan() {
         // Stop failed, handle it.
       });
   };
-  let width = +document.querySelector("#scanner-container .dropzone")
-    .clientWidth;
-  let height = +document.querySelector("#scanner-container .dropzone")
-    .clientHeight;
-  // console.log(width, height);
+  // let width = +document.querySelector("#scanner-container .dropzone")
+  //   .clientWidth;
+  // let height = +document.querySelector("#scanner-container .dropzone")
+  //   .clientHeight;
+
+  let width = +document.querySelector(".mobile-scanner").clientWidth;
+  let height = +document.querySelector(".mobile-scanner").clientHeight;
+  console.log(width, height);
   const config = {
     fps: 10,
-    qrbox: { width: 290, height: 300 },
+    qrbox: { width: width - 100, height: height - 300 },
     aspectRatio: width / height,
   };
 
@@ -442,4 +445,4 @@ function quitScan(e) {
   });
 }
 
-console.log(document.querySelector("#scanner-container .dropzone").clientWidth);
+console.log(document.querySelector("body").clientWidth);
