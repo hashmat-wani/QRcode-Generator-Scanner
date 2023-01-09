@@ -381,11 +381,11 @@ function scan() {
   // const aspectRatio=document.querySelector("#scanner-container .dropzone").clientWidth/
   const config = {
     fps: 10,
-    qrbox: { width: 250, height: 250 },
+    qrbox: { width: width - 90, height: height - 300 },
     aspectRatio: width / height,
   };
 
-  // If you want to prefer back camera
+  // prefering back camera
   html5QrCode.start(
     { facingMode: "environment" },
     config,
