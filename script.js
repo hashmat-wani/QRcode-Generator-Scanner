@@ -1,6 +1,13 @@
 let bodyWidth = document.querySelector("body").clientWidth;
 let mobileView = bodyWidth > 768 ? false : true;
 
+const resultPopUp = document.querySelector(".mobile-result");
+const resultPopUpText = document.querySelector(".mobile-result .result-text");
+
+document.querySelector(".fa-times").addEventListener("click", () => {
+  resultPopUp.classList.remove("show");
+});
+
 const navItems = document.querySelectorAll("nav div");
 const containers = document.querySelectorAll(".container");
 
@@ -309,7 +316,10 @@ function fetchRequest(file, formData) {
         reset();
         return;
       }
-      resultTextArea.innerHTML = result;
+      if (mobileView) {
+        resultPopUp.classList.add("show");
+        resultPopUpText.textContent = result;
+      } else resultTextArea.innerHTML = result;
 
       // show buttons only when there is some text in textarea
       document.querySelector("#result-btns").classList.add("active");
@@ -333,7 +343,8 @@ function reset() {
   img.classList.remove("show");
   content.classList.add("show");
   resultTextArea.innerText = "";
-  if (!mobileView) dropZone.style.height = "350px";
+  if (mobileView) resultPopUp.classList.remove("show");
+  dropZone.style.height = "350px";
   cameraAccess.classList.add("show");
   scannerOptions.classList.remove("show");
 }
@@ -343,7 +354,7 @@ function updateThumbnail(file) {
   dropZone.style.border = "none";
   // qrCodeContent.classList.remove("show");
   scanReader.classList.remove("show");
-  if (!mobileView) dropZone.style.height = "400px";
+  dropZone.style.height = "400px";
   scannerOptions.classList.remove("show");
   cameraAccess.classList.add("show");
   let reader = new FileReader();
@@ -357,35 +368,44 @@ function updateThumbnail(file) {
 
 content.addEventListener("change", browseImage);
 
-document.getElementById("copy").addEventListener("click", () => {
-  let text = document.querySelector("textarea").textContent;
-  navigator.clipboard.writeText(text);
+document.querySelectorAll(".copy").forEach((el, idx) => {
+  el.addEventListener("click", () => {
+    let text =
+      idx == 0
+        ? resultPopUpText.textContent
+        : document.querySelector("textarea").textContent;
+    navigator.clipboard.writeText(text);
+  });
 });
 
-document.getElementById("open").addEventListener("click", () => {
-  let text = document.querySelector("textarea").textContent;
-  window.open(`http://www.google.com/search?btnG=1&pws=0&q=${text}`);
+document.querySelectorAll(".open").forEach((el, idx) => {
+  el.addEventListener("click", () => {
+    let text =
+      idx == 0
+        ? resultPopUpText.textContent
+        : document.querySelector("textarea").textContent;
+    window.open(`http://www.google.com/search?btnG=1&pws=0&q=${text}`);
+  });
 });
 
 const html5QrCode = new Html5Qrcode("reader");
 function scan() {
-  console.log(dropZone.clientWidth);
-  console.log(dropZone.clientHeight);
   const qrCodeSuccessCallback = (decodedText, decodedResult) => {
     /* handle success */
     let beep = new Audio("./scan-beep.wav");
     beep.volume = 0.05;
     beep.play();
     navigator.vibrate(80);
-
-    if (mobileView) alert(decodedText);
-    else handleScanSuccess(decodedText);
+    if (mobileView) {
+      resultPopUp.classList.add("show");
+      resultPopUpText.textContent = result;
+    } else handleScanSuccess(decodedText);
 
     html5QrCode
       .stop()
       .then((ignore) => {
         // QR Code scanning is stopped.
-        if (!mobileView) dropZone.style.height = "350px";
+        dropZone.style.height = "350px";
         dropZone.style.border = "2px dashed #5a4ca1";
         // qrCodeContent.classList.remove("show");
         scanReader.classList.remove("show");
@@ -403,7 +423,7 @@ function scan() {
     fps: 10,
     qrbox: { width: 250, height: 250 },
     // aspectRatio: mobileView ? 450 / 350 : 350 / 450,
-    aspectRatio: dropZone.clientHeight / dropZone.clientWidth,
+    aspectRatio: dropZone.clientWidth / dropZone.clientHeight,
   };
 
   // prefering back camera

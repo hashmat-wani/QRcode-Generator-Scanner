@@ -23,20 +23,28 @@
     ></script>
   </head>
   <body>
-    <!-- <div id="reader"></div> -->
-    <!-- <div class="mobile-scanner">
-      
-      <div class="browsing-option">
-        <i class="fa-solid fa-camera show"></i>
-        <div class="scanner-options">
-          <i class="fa-solid fa-images"></i>
-          <i class="fa-solid fa-xmark"></i>
-        </div>
-      </div>
-    </div> -->
-
     <!-- wrapper -->
     <div class="wrapper">
+      <div class="mobile-result">
+        <i class="close fa fa-times"></i>
+        <div class="result-text">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio quaerat
+          harum ab omnis dolorum, exercitationem dolores perferendis quibusdam
+          doloribus quia nostrum vitae ratione asperiores, facere voluptatem
+          obcaecati corrupti! Minus, eaque. Lorem ipsum dolor sit amet
+          consectetur adipisicing
+        </div>
+        <div class="actions">
+          <button class="btn copy" id="copy">
+            <i class="fa-solid fa-copy"></i>
+            copy
+          </button>
+          <button class="btn open" id="open">
+            <i class="fa-solid fa-external-link"></i>
+            open
+          </button>
+        </div>
+      </div>
       <nav>
         <div class="active" id="generator">Generator</div>
         <div id="scanner">Scanner</div>
@@ -325,11 +333,11 @@
             <p class="heading">Result</p>
             <textarea id="result" disabled></textarea>
             <div class="btns" id="result-btns">
-              <button class="btn" id="copy">
+              <button class="btn copy" id="copy">
                 <i class="fa-solid fa-copy"></i>
                 copy
               </button>
-              <button class="btn" id="open">
+              <button class="btn open" id="open">
                 <i class="fa-solid fa-external-link"></i>
                 open
               </button>
