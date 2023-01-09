@@ -409,28 +409,12 @@ function scan() {
         // Stop failed, handle it.
       });
   };
-  // let width = +document.querySelector("#scanner-container .dropzone")
-  //   .clientWidth;
-  // let height = +document.querySelector("#scanner-container .dropzone")
-  //   .clientHeight;
-
-  let width = scanReader.offsetWidth;
-  let height = scanReader.offsetHeight;
-  console.log(width, height);
-  let as = width / height;
-  console.log(as);
-  // const config = {
-  //   fps: 10,
-  //   qrbox: { width: width - 100, height: height - 300 },
-  //   aspectRatio: width / height,
-  // };
   let bodyWidth = document.querySelector("body").clientWidth;
   let mobileView = bodyWidth > 768 ? false : true;
-
   const config = {
     fps: 10,
     qrbox: { width: 250, height: 250 },
-    aspectRatio: 450 / 350,
+    aspectRatio: mobileView ? 450 / 350 : 350 / 450,
   };
 
   // prefering back camera
