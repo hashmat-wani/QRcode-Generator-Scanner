@@ -545,14 +545,15 @@ nav div.active::before {
     height: 200px;
   }
   .dropzone {
-    width: 100%;
+    width: 100vw;
     border: none;
   }
   .result {
     width: 100%;
   }
   .result textarea {
-    width: 100%;
+    /* border: none; */
+    width: 100vw;
   }
 }
 

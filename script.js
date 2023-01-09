@@ -401,7 +401,7 @@ const scannerOptions = document.querySelector(".scanner-options");
 cameraAccess.addEventListener("click", (e) => {
   e.preventDefault();
   e.stopPropagation();
-  dropZone.style.height = "450px";
+  dropZone.style.height = "100vh";
   scan();
   img.src = "";
   img.classList.remove("show");
