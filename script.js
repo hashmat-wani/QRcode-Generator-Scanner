@@ -381,7 +381,7 @@ function scan() {
   // const aspectRatio=document.querySelector("#scanner-container .dropzone").clientWidth/
   const config = {
     fps: 10,
-    qrbox: { width: 400, height: 400 },
+    qrbox: { width: 250, height: 250 },
     aspectRatio: width / height,
   };
 
