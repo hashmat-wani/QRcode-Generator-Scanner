@@ -3,7 +3,7 @@
 }
 
 .mobile-result {
-  /* border: 1px solid red; */
+  border: 1px solid red;
   display: none;
   height: 100vh;
   width: 100%;
@@ -645,7 +645,8 @@ nav div.active::before {
     align-items: center;
   }
   .container .left {
-    min-height: calc(100vh - 70px);
+    border: 1px solid red;
+    min-height: calc(100vh - 150px);
     width: 100%;
   }
   .container .right {
