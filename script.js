@@ -218,13 +218,20 @@ const dropZone = document.querySelector(".dropzone"),
   dropZoneInput = document.querySelector("#file"),
   dropZoneText = document.querySelector(".dropzone .text"),
   content = dropZone.querySelector(".content"),
-  img = dropZone.querySelector("img");
+  img = dropZone.querySelector("img"),
+  scanReader = document.getElementById("reader");
+
 // qrCodeContent = dropZone.querySelector(".qr-code-content");
 
 // qrCodeContent.addEventListener("click", (e) => {
 //   e.preventDefault();
 //   e.stopPropagation();
 // });
+
+scanReader.addEventListener("click", (e) => {
+  e.preventDefault();
+  e.stopPropagation();
+});
 
 // when a file is hovered on drop zone
 const handleDragOver = (e) => {
@@ -318,6 +325,8 @@ function fetchRequest(file, formData) {
 function reset() {
   dropZone.style.border = "2px dashed #5a4ca1";
   document.querySelector("#result-btns").classList.remove("active");
+
+  scanReader.classList.remove("show");
   img.src = "";
   img.classList.remove("show");
   content.classList.add("show");
@@ -331,6 +340,8 @@ function reset() {
 function updateThumbnail(file) {
   dropZone.style.border = "none";
   // qrCodeContent.classList.remove("show");
+
+  scanReader.classList.remove("show");
   dropZone.style.height = "400px";
   scannerOptions.classList.remove("show");
   cameraAccess.classList.add("show");
@@ -387,6 +398,7 @@ function scan() {
       .then((ignore) => {
         dropZone.style.height = "350px";
         // qrCodeContent.classList.remove("show");
+        scanReader.classList.remove("show");
         content.classList.add("show");
         cameraAccess.classList.add("show");
         scannerOptions.classList.remove("show");
@@ -446,7 +458,6 @@ const cameraAccess = document.querySelector(".fa-camera");
 const galleryAccess = document.querySelector(".fa-images");
 const closeScan = document.querySelector(".fa-xmark");
 const scannerOptions = document.querySelector(".scanner-options");
-const reader = document.getElementById("reader");
 cameraAccess.addEventListener("click", (e) => {
   e.preventDefault();
   e.stopPropagation();
@@ -459,6 +470,7 @@ cameraAccess.addEventListener("click", (e) => {
   img.classList.remove("show");
   content.classList.remove("show");
   // qrCodeContent.classList.add("show");
+  scanReader.classList.add("show");
   resultTextArea.innerText = "";
   cameraAccess.classList.remove("show");
   scannerOptions.classList.add("show");
@@ -493,21 +505,3 @@ function quitScan(e) {
 }
 
 console.log(document.querySelector("body").clientWidth);
-
-// function onScanSuccess(decodedText, decodedResult) {
-//   // handle the scanned code as you like, for example:
-//   console.log(`Code matched = ${decodedText}`, decodedResult);
-// }
-
-// function onScanFailure(error) {
-//   // handle scan failure, usually better to ignore and keep scanning.
-//   // for example:
-//   console.warn(`Code scan error = ${error}`);
-// }
-
-// let html5QrcodeScanner = new Html5QrcodeScanner(
-//   "reader",
-//   { fps: 10, qrbox: { width: 250, height: 250 } },
-//   /* verbose= */ false
-// );
-// html5QrcodeScanner.render(onScanSuccess, onScanFailure);
