@@ -3,14 +3,14 @@
 }
 
 .mobile-result {
-  border: 1px solid red;
+  /* border: 1px solid blue; */
   display: none;
-  height: 100vh;
+  height: calc(100vh - 40px);
   width: 100%;
   z-index: 100;
   background: #fff;
   padding: 20px;
-  padding-bottom: 50px;
+  /* padding-bottom: 50px; */
   position: absolute;
   top: 50%;
   left: 50%;
@@ -645,8 +645,8 @@ nav div.active::before {
     align-items: center;
   }
   .container .left {
-    border: 1px solid red;
-    min-height: calc(100vh - 150px);
+    /* border: 1px solid red; */
+    min-height: calc(100vh - 65px);
     width: 100%;
   }
   .container .right {
@@ -663,6 +663,9 @@ nav div.active::before {
     display: none;
   }
 
+  .mobile-result.show {
+    display: none;
+  }
   .qr-code {
     margin-top: 20px;
   }
