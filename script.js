@@ -291,7 +291,6 @@ function fetchRequest(file, formData) {
   })
     .then((res) => res.json())
     .then((result) => {
-      // console.log(result);
       result = result[0].symbol[0].data;
       dropZoneText.innerHTML = result
         ? "Upload QR code to scan"
@@ -317,6 +316,8 @@ function fetchRequest(file, formData) {
 
 // reset function
 function reset() {
+  dropZone.style.border = "2px dashed #5a4ca1";
+  document.querySelector("#result-btns").classList.remove("active");
   img.src = "";
   img.classList.remove("show");
   content.classList.add("show");
@@ -328,6 +329,7 @@ function reset() {
 
 // updateThumbnail
 function updateThumbnail(file) {
+  dropZone.style.border = "none";
   qrCodeContent.classList.remove("show");
   dropZone.style.height = "400px";
   scannerOptions.classList.remove("show");
@@ -381,7 +383,7 @@ function scan() {
   // const aspectRatio=document.querySelector("#scanner-container .dropzone").clientWidth/
   const config = {
     fps: 10,
-    qrbox: { width: width - 90, height: height - 300 },
+    qrbox: { width: 290, height: 300 },
     aspectRatio: width / height,
   };
 
@@ -401,7 +403,8 @@ const scannerOptions = document.querySelector(".scanner-options");
 cameraAccess.addEventListener("click", (e) => {
   e.preventDefault();
   e.stopPropagation();
-  dropZone.style.height = "100vh";
+  dropZone.style.height = "450px";
+  dropZone.style.border = "none";
   scan();
   img.src = "";
   img.classList.remove("show");
@@ -417,7 +420,6 @@ galleryAccess.addEventListener("click", (e) => browseImage(e, true));
 closeScan.addEventListener("click", quitScan);
 
 function browseImage(e, isScanning = false) {
-  console.log(e);
   isScanning && html5QrCode.stop();
 
   let file = e?.target?.files[0];

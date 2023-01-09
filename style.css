@@ -80,6 +80,9 @@ nav div.active::before {
   column-gap: 25px;
   padding: 25px;
 }
+#scanner-container {
+  padding: 25px;
+}
 .container.active {
   display: flex;
 }
@@ -467,7 +470,6 @@ nav div.active::before {
   border: 1px solid red;
 } */
 .result {
-  /* border: 1px solid red; */
   position: relative;
 }
 .result textarea {
@@ -544,7 +546,7 @@ nav div.active::before {
     width: 200px;
     height: 200px;
   }
-  .dropzone {
+  /* .dropzone {
     width: 100vw;
     border: none;
   }
@@ -552,9 +554,8 @@ nav div.active::before {
     width: 100%;
   }
   .result textarea {
-    /* border: none; */
     width: 100vw;
-  }
+  } */
 }
 
 .qr-code-content {
@@ -566,13 +567,12 @@ nav div.active::before {
 }
 
 #reader {
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
 }
 
 .browsing-option {
   display: flex;
-  /* border: 1px solid red; */
   font-size: 30px;
   position: absolute;
   bottom: 15px;
@@ -586,10 +586,8 @@ nav div.active::before {
 }
 .scanner-options {
   color: #fff;
-  color: black;
   display: none;
   column-gap: 20px;
-  /* border: 1px solid red; */
 }
 .scanner-options.show {
   display: flex;
