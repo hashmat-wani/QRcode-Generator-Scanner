@@ -422,22 +422,22 @@ document.getElementById("open").addEventListener("click", () => {
 function test() {
   // CAMERA ID
   const html5QrCode = new Html5Qrcode("reader");
-  let cameraId;
-  Html5Qrcode.getCameras()
-    .then((devices) => {
-      /**
-       * devices would be an array of objects of type:
-       * { id: "id", label: "label" }
-       */
-      if (devices && devices.length) {
-        cameraId = devices[0].id;
-        console.log(cameraId);
-        // .. use this to start scanning.
-      }
-    })
-    .catch((err) => {
-      // handle err
-    });
+  // let cameraId;
+  // Html5Qrcode.getCameras()
+  //   .then((devices) => {
+  //     /**
+  //      * devices would be an array of objects of type:
+  //      * { id: "id", label: "label" }
+  //      */
+  //     if (devices && devices.length) {
+  //       cameraId = devices[0].id;
+  //       console.log(cameraId);
+  //       // .. use this to start scanning.
+  //     }
+  //   })
+  //   .catch((err) => {
+  //     // handle err
+  //   });
 
   // const reader = document.getElementById("reader");
 
@@ -452,21 +452,21 @@ function test() {
     qrbox: { width: 300, height: 300 },
     aspectRatio: 0.77,
   };
-  html5QrCode.start(
-    { deviceId: { exact: cameraId } },
-    config,
-    qrCodeSuccessCallback
-  );
+  // html5QrCode.start(
+  //   { deviceId: { exact: cameraId } },
+  //   config,
+  //   qrCodeSuccessCallback
+  // );
 
   // If you want to prefer front camera
   // html5QrCode.start({ facingMode: "user" }, config, qrCodeSuccessCallback);
 
   // If you want to prefer back camera
-  // html5QrCode.start(
-  //   { facingMode: "environment" },
-  //   config,
-  //   qrCodeSuccessCallback
-  // );
+  html5QrCode.start(
+    { facingMode: "environment" },
+    config,
+    qrCodeSuccessCallback
+  );
 
   // Select front camera or fail with `OverconstrainedError`.
   // html5QrCode.start(
