@@ -429,8 +429,8 @@ function scan() {
 
   const config = {
     fps: 10,
-    // qrbox: { width: 250, height: 250 },
-    aspectRatio: 350 / 450,
+    qrbox: { width: 250, height: 250 },
+    aspectRatio: 450 / 350,
   };
 
   // prefering back camera
