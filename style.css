@@ -5,12 +5,11 @@
 .mobile-result {
   border: 1px solid blue;
   display: none;
-  height: max(100wv, calc(100vh - 70px));
+  height: max(100vw, calc(100vh - 70px));
   width: 100%;
   z-index: 100;
   background: #fff;
   padding: 20px;
-  /* padding-bottom: 50px; */
   position: absolute;
   top: 50%;
   left: 50%;
