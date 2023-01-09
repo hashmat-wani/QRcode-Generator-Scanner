@@ -3,9 +3,9 @@
 }
 
 .mobile-result {
-  /* border: 1px solid blue; */
+  border: 1px solid blue;
   display: none;
-  height: calc(100vh - 70px);
+  height: max(100wv, calc(100vh - 70px));
   width: 100%;
   z-index: 100;
   background: #fff;
@@ -645,7 +645,7 @@ nav div.active::before {
     align-items: center;
   }
   .container .left {
-    /* border: 1px solid red; */
+    border: 1px solid red;
     min-height: calc(100vh - 65px);
     width: 100%;
   }
