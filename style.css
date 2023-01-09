@@ -566,17 +566,24 @@ nav div.active::before {
   } */
 }
 
-.qr-code-content {
+/* #reader {
+  display: none;
+}
+#reader.shoe {
+  display: block;
+} */
+
+/* .qr-code-content {
   display: none;
   position: relative;
 }
 .qr-code-content.show {
   display: block;
-}
+} */
 
 #reader {
-  width: 100%;
-  height: 100%;
+  /* width: 350px; */
+  height: 450px;
 }
 
 .browsing-option {

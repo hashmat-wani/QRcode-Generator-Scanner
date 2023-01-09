@@ -218,13 +218,13 @@ const dropZone = document.querySelector(".dropzone"),
   dropZoneInput = document.querySelector("#file"),
   dropZoneText = document.querySelector(".dropzone .text"),
   content = dropZone.querySelector(".content"),
-  img = dropZone.querySelector("img"),
-  qrCodeContent = dropZone.querySelector(".qr-code-content");
+  img = dropZone.querySelector("img");
+//   qrCodeContent = dropZone.querySelector(".qr-code-content");
 
-qrCodeContent.addEventListener("click", (e) => {
-  e.preventDefault();
-  e.stopPropagation();
-});
+// qrCodeContent.addEventListener("click", (e) => {
+//   e.preventDefault();
+//   e.stopPropagation();
+// });
 
 // when a file is hovered on drop zone
 const handleDragOver = (e) => {
@@ -330,7 +330,7 @@ function reset() {
 // updateThumbnail
 function updateThumbnail(file) {
   dropZone.style.border = "none";
-  qrCodeContent.classList.remove("show");
+  // qrCodeContent.classList.remove("show");
   dropZone.style.height = "400px";
   scannerOptions.classList.remove("show");
   cameraAccess.classList.add("show");
@@ -364,7 +364,7 @@ function scan() {
       .stop()
       .then((ignore) => {
         dropZone.style.height = "350px";
-        qrCodeContent.classList.remove("show");
+        // qrCodeContent.classList.remove("show");
         content.classList.add("show");
         cameraAccess.classList.add("show");
         scannerOptions.classList.remove("show");
@@ -375,10 +375,10 @@ function scan() {
         // Stop failed, handle it.
       });
   };
-  // let width = +document.querySelector("#scanner-container .dropzone")
-  //   .clientWidth;
-  // let height = +document.querySelector("#scanner-container .dropzone")
-  //   .clientHeight;
+  let width = +document.querySelector("#scanner-container .dropzone")
+    .clientWidth;
+  let height = +document.querySelector("#scanner-container .dropzone")
+    .clientHeight;
 
   // let width = +document.querySelector(".mobile-scanner").clientWidth;
   // let height = +document.querySelector(".mobile-scanner").clientHeight;
@@ -392,7 +392,7 @@ function scan() {
   const config = {
     fps: 10,
     qrbox: { width: 250, height: 250 },
-    // aspectRatio: 1,
+    aspectRatio: 350 / 450,
   };
 
   // prefering back camera
@@ -417,7 +417,7 @@ cameraAccess.addEventListener("click", (e) => {
   img.src = "";
   img.classList.remove("show");
   content.classList.remove("show");
-  qrCodeContent.classList.add("show");
+  // qrCodeContent.classList.add("show");
   resultTextArea.innerText = "";
   cameraAccess.classList.remove("show");
   scannerOptions.classList.add("show");
