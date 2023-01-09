@@ -1,3 +1,6 @@
+let bodyWidth = document.querySelector("body").clientWidth;
+let mobileView = bodyWidth > 768 ? false : true;
+
 const navItems = document.querySelectorAll("nav div");
 const containers = document.querySelectorAll(".container");
 
@@ -330,7 +333,7 @@ function reset() {
   img.classList.remove("show");
   content.classList.add("show");
   resultTextArea.innerText = "";
-  dropZone.style.height = "350px";
+  if (!mobileView) dropZone.style.height = "350px";
   cameraAccess.classList.add("show");
   scannerOptions.classList.remove("show");
 }
@@ -340,7 +343,7 @@ function updateThumbnail(file) {
   dropZone.style.border = "none";
   // qrCodeContent.classList.remove("show");
   scanReader.classList.remove("show");
-  dropZone.style.height = "400px";
+  if (!mobileView) dropZone.style.height = "400px";
   scannerOptions.classList.remove("show");
   cameraAccess.classList.add("show");
   let reader = new FileReader();
@@ -366,24 +369,22 @@ document.getElementById("open").addEventListener("click", () => {
 
 const html5QrCode = new Html5Qrcode("reader");
 function scan() {
-  let bodyWidth = document.querySelector("body").clientWidth;
-  let mobileView = bodyWidth > 768 ? false : true;
+  console.log(dropZone.clientHeight);
   const qrCodeSuccessCallback = (decodedText, decodedResult) => {
     /* handle success */
     let beep = new Audio("./scan-beep.wav");
     beep.volume = 0.05;
     beep.play();
     navigator.vibrate(80);
-    // if (mobileView) {
-    //   // alert(decodedText);
-    // } else
-    handleScanSuccess(decodedText);
+
+    if (mobileView) alert(decodedText);
+    else handleScanSuccess(decodedText);
+
     html5QrCode
       .stop()
       .then((ignore) => {
         // QR Code scanning is stopped.
-        dropZone.style.border = "2px dashed #5a4ca1";
-        dropZone.style.height = "350px";
+        if (!mobileView) dropZone.style.height = "350px";
         dropZone.style.border = "2px dashed #5a4ca1";
         // qrCodeContent.classList.remove("show");
         scanReader.classList.remove("show");
@@ -400,7 +401,7 @@ function scan() {
   const config = {
     fps: 10,
     qrbox: { width: 250, height: 250 },
-    aspectRatio: mobileView ? 450 / 350 : 350 / 450,
+    // aspectRatio: mobileView ? 450 / 350 : 350 / 450,
   };
 
   // prefering back camera
@@ -419,7 +420,7 @@ const scannerOptions = document.querySelector(".scanner-options");
 cameraAccess.addEventListener("click", (e) => {
   e.preventDefault();
   e.stopPropagation();
-  dropZone.style.height = "450px";
+  if (!mobileView) dropZone.style.height = "450px";
   dropZone.style.border = "none";
   scan();
   img.src = "";
@@ -427,8 +428,8 @@ cameraAccess.addEventListener("click", (e) => {
   content.classList.remove("show");
   // qrCodeContent.classList.add("show");
   scanReader.classList.add("show");
-  scanReader.style.width = "350px";
-  scanReader.style.height = "450px";
+  scanReader.style.width = "100%";
+  scanReader.style.height = "100%";
   resultTextArea.innerText = "";
   cameraAccess.classList.remove("show");
   scannerOptions.classList.add("show");

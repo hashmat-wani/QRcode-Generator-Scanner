@@ -535,6 +535,7 @@ nav div.active::before {
   }
 
   .container {
+    min-height: 100vh;
     padding: 20px 0 0;
     flex-direction: column;
     row-gap: 30px;
@@ -546,6 +547,21 @@ nav div.active::before {
   .container .right {
     width: 100%;
   }
+  #scanner-container .left {
+    border: 1px solid red;
+  }
+  .dropzone {
+    height: 100vh;
+    width: 100%;
+  }
+
+  #scanner-container .right {
+    display: none;
+  }
+
+  .fa-arrow-right-arrow-left {
+    display: none;
+  }
 
   .qr-code {
     margin-top: 20px;
@@ -554,16 +570,6 @@ nav div.active::before {
     width: 200px;
     height: 200px;
   }
-  /* .dropzone {
-    width: 100vw;
-    border: none;
-  }
-  .result {
-    width: 100%;
-  }
-  .result textarea {
-    width: 100vw;
-  } */
 }
 
 /* .qr-code-content {
