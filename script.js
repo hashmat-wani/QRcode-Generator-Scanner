@@ -373,11 +373,16 @@ function scan() {
         // Stop failed, handle it.
       });
   };
-
+  let width = +document.querySelector("#scanner-container .dropzone")
+    .clientWidth;
+  let height = +document.querySelector("#scanner-container .dropzone")
+    .clientHeight;
+  console.log(width, height);
+  // const aspectRatio=document.querySelector("#scanner-container .dropzone").clientWidth/
   const config = {
     fps: 10,
     qrbox: { width: 400, height: 400 },
-    aspectRatio: 0.77,
+    aspectRatio: width / height,
   };
 
   // If you want to prefer back camera
@@ -396,14 +401,13 @@ const scannerOptions = document.querySelector(".scanner-options");
 cameraAccess.addEventListener("click", (e) => {
   e.preventDefault();
   e.stopPropagation();
-
+  dropZone.style.height = "450px";
   scan();
   img.src = "";
   img.classList.remove("show");
   content.classList.remove("show");
   qrCodeContent.classList.add("show");
   resultTextArea.innerText = "";
-  dropZone.style.height = "450px";
   cameraAccess.classList.remove("show");
   scannerOptions.classList.add("show");
 });
