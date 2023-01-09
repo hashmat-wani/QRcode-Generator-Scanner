@@ -414,8 +414,8 @@ function scan() {
   // let height = +document.querySelector("#scanner-container .dropzone")
   //   .clientHeight;
 
-  let width = +document.getElementById("reader").clientWidth;
-  let height = +document.getElementById("reader").clientHeight;
+  let width = scanReader.offsetWidth;
+  let height = scanReader.offsetHeight;
   console.log(width, height);
   let as = width / height;
   console.log(as);
@@ -443,7 +443,7 @@ function scan() {
   const config = {
     fps: 10,
     qrbox: { width: 250, height: 250 },
-    aspectRatio: 350 / 450,
+    aspectRatio: 0.5,
   };
 
   // prefering back camera
@@ -458,13 +458,12 @@ const cameraAccess = document.querySelector(".fa-camera");
 const galleryAccess = document.querySelector(".fa-images");
 const closeScan = document.querySelector(".fa-xmark");
 const scannerOptions = document.querySelector(".scanner-options");
+
 cameraAccess.addEventListener("click", (e) => {
   e.preventDefault();
   e.stopPropagation();
   dropZone.style.height = "450px";
   dropZone.style.border = "none";
-  reader.style.height = "100%";
-  reader.style.width = "100%";
   scan();
   img.src = "";
   img.classList.remove("show");
