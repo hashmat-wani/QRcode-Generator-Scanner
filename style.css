@@ -534,17 +534,19 @@ nav div.active::before {
     border-radius: 0;
   }
 
-  /* .container {
+  .container {
     padding: 20px 0 0;
     flex-direction: column;
     row-gap: 30px;
     align-items: center;
-  } */
+  }
   .container .left {
-    /* width: 100%; */
+    width: 100%;
+    min-width: 500px;
   }
   .container .right {
-    /* width: 100%; */
+    width: 100%;
+    min-width: 500px;
   }
 
   .qr-code {
