@@ -369,6 +369,7 @@ document.getElementById("open").addEventListener("click", () => {
 
 const html5QrCode = new Html5Qrcode("reader");
 function scan() {
+  console.log(dropZone.clientWidth);
   console.log(dropZone.clientHeight);
   const qrCodeSuccessCallback = (decodedText, decodedResult) => {
     /* handle success */
@@ -402,6 +403,7 @@ function scan() {
     fps: 10,
     qrbox: { width: 250, height: 250 },
     // aspectRatio: mobileView ? 450 / 350 : 350 / 450,
+    aspectRatio: dropZone.clientWidth / dropZone.clientHeight,
   };
 
   // prefering back camera

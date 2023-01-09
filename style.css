@@ -556,7 +556,8 @@ nav div.active::before {
     padding: 0;
   }
   #scanner-container .left {
-    /* border: 1px solid red; */
+    padding: 0;
+    border: 1px solid red;
   }
   #scanner-container .right {
     display: none;
@@ -584,9 +585,7 @@ nav div.active::before {
     /* width: 100%; */
     /* height: 100%; */
   }
-  nav {
-    display: none;
-  }
+
   .fa-arrow-right-arrow-left {
     display: none;
   }
