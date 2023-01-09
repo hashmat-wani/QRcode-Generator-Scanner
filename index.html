@@ -17,16 +17,36 @@
       type="text/javascript"
       src="https://unpkg.com/qr-code-styling@1.5.0/lib/qr-code-styling.js"
     ></script>
+    <script
+      src="https://unpkg.com/html5-qrcode"
+      type="text/javascript"
+    ></script>
   </head>
   <body>
+    <!-- <div
+      style="width: 500px; height: 500px; border: 1px solid red"
+      id="reader"
+    ></div> -->
+
+    <!-- <script src="./dist/html5-qrcode.js"></script> -->
+
+    <!-- <div class="testing">
+      <div id="reader"></div>
+      <p>abcsss</p>
+      <div class="gallery">
+        <i class="fa-solid fa-images"></i>
+      </div>
+    </div> -->
+
+    <!-- <div id="reader"></div> -->
+
     <div class="wrapper">
       <nav>
-        <!-- <a href="index.html">QR Code</a> -->
         <div class="active" id="generator">Generator</div>
         <div id="scanner">Scanner</div>
       </nav>
 
-      <div class="container active" id="generator-container">
+      <div class="container" id="generator-container">
         <div class="left">
           <form action="#">
             <!-- INPUT -->
@@ -280,16 +300,34 @@
         </div>
       </div>
 
-      <div class="container" id="scanner-container">
+      <div class="container active" id="scanner-container">
         <div class="left">
           <p class="heading">QR Code</p>
           <label for="file" class="dropzone">
+            <div class="qr-code-content">
+              <div id="reader"></div>
+              <!-- <div class="gallery">
+                <i class="fa-solid fa-images"></i>
+                <i class="fa-solid fa-file-image"></i>
+              </div> -->
+            </div>
             <div class="content show">
               <span class="text">Drag QR Code here or</span>
+
               <button class="btn">browse</button>
-              <input type="file" accept="image/*" id="file" hidden />
+              <b>OR</b>
+
+              <input
+                type="file"
+                accept="image/*"
+                id="file"
+                hidden
+                capture="user"
+              />
             </div>
             <img id="preview" />
+            <i class="browsing-option fa-solid fa-camera show"></i>
+            <i class="browsing-option fa-solid fa-file-image"></i>
           </label>
         </div>
         <i class="fa-solid fa-arrow-right-arrow-left"></i>

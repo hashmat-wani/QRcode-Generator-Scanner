@@ -76,6 +76,7 @@ nav div.active::before {
   background-color: #fff;
   border-bottom-left-radius: 20px;
   border-bottom-right-radius: 20px;
+  /* border: 1px solid red; */
 }
 .container.active {
   display: flex;
@@ -347,7 +348,6 @@ nav div.active::before {
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* padding-top: 30px; */
 }
 .right button {
   width: 70%;
@@ -401,10 +401,11 @@ nav div.active::before {
 /*----------LEFT-DROPZONE---------------*/
 .dropzone {
   display: block;
-  width: 300px;
-  height: 300px;
+  width: 350px;
+  height: 350px;
   border: 2px dashed #a5a5a5;
   cursor: pointer;
+  position: relative;
 }
 .dropzone .text {
   padding: 0 20px;
@@ -425,7 +426,7 @@ nav div.active::before {
 }
 .dropzone img {
   width: 100%;
-  height: 100%;
+  height: 350px;
   object-fit: cover;
   display: none;
 }
@@ -535,4 +536,47 @@ nav div.active::before {
     width: 200px;
     height: 200px;
   }
+}
+
+.qr-code-content {
+  display: none;
+  position: relative;
+}
+.qr-code-content.show {
+  display: block;
+}
+
+#reader {
+  width: 100%;
+  height: 100%;
+}
+.qr-code-content .gallery {
+  color: #fff;
+  font-size: 30px;
+  position: absolute;
+  left: 50%;
+  padding-bottom: 20px;
+  transform: translateX(-50%);
+  bottom: 0;
+  z-index: 100;
+}
+
+.browsing-option {
+  font-size: 30px;
+  position: absolute;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: none;
+}
+.browsing-option.show {
+  display: block;
+}
+
+.browsing-option.fa-camera {
+  color: var(--primary-clr);
+}
+
+.browsing-option.fa-file-image {
+  color: #fff;
 }

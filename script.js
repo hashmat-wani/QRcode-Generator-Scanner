@@ -142,7 +142,7 @@ imageRadios.forEach((item) => {
 
 // function to generate QR code
 function generateQrCode() {
-  console.log("generating");
+  // console.log("generating");
   // get selected image radio
   let imageRadio = document.querySelector("input[name='logo']:checked");
   // select corresponding image
@@ -216,7 +216,10 @@ downloadSvg.addEventListener("click", () => {
 
 const dropZone = document.querySelector(".dropzone"),
   dropZoneInput = document.querySelector("#file"),
-  dropZoneText = document.querySelector(".dropzone .text");
+  dropZoneText = document.querySelector(".dropzone .text"),
+  content = dropZone.querySelector(".content"),
+  img = dropZone.querySelector("img"),
+  qrCodeContent = dropZone.querySelector(".qr-code-content");
 
 // when a file is hovered on drop zone
 const handleDragOver = (e) => {
@@ -243,11 +246,9 @@ const handleDrop = (e) => {
 
   // get a file
   const file = e.dataTransfer.files[0];
-  // console.log(file);
 
   // add file to input file
   dropZoneInput.files = e.dataTransfer.files;
-  // console.log(dropZoneInput.files);
 
   // if file exists
   if (dropZoneInput.files.length) {
@@ -258,7 +259,6 @@ const handleDrop = (e) => {
 
     let formData = new FormData();
     formData.append("file", file);
-    // console.log(formData);
     fetchRequest(file, formData);
   }
 };
@@ -286,7 +286,7 @@ function fetchRequest(file, formData) {
   })
     .then((res) => res.json())
     .then((result) => {
-      console.log(result);
+      // console.log(result);
       result = result[0].symbol[0].data;
       dropZoneText.innerHTML = result
         ? "Upload QR code to scan"
@@ -308,9 +308,6 @@ function fetchRequest(file, formData) {
 
 // reset function
 function reset() {
-  console.log("resetting");
-  const content = dropZone.querySelector(".content"),
-    img = dropZone.querySelector("img");
   img.src = "";
   img.classList.remove("show");
   content.classList.add("show");
@@ -319,7 +316,7 @@ function reset() {
 
 // updateThumbnail
 function updateThumbnail(img) {
-  console.log(img);
+  // console.log(img);
   let reader = new FileReader();
   reader.readAsDataURL(img);
   reader.onload = () => {
@@ -331,14 +328,22 @@ function updateThumbnail(img) {
   };
 }
 
-dropZoneInput.addEventListener("change", async (e) => {
-  console.log("abc");
+dropZoneInput.addEventListener("change", browseImage);
+
+function browseImage(e) {
+  qrCodeContent.classList.remove("show");
+
+  dropZone.style.height = "400px";
+
+  galleryAccess.classList.remove("show");
+  cameraAccess.classList.add("show");
+
   let file = e.target.files[0];
   if (!file) return;
   let formData = new FormData();
   formData.append("file", file);
   fetchRequest(file, formData);
-});
+}
 
 document.getElementById("copy").addEventListener("click", () => {
   let text = document.querySelector("textarea").textContent;
@@ -349,3 +354,151 @@ document.getElementById("open").addEventListener("click", () => {
   let text = document.querySelector("textarea").textContent;
   window.open(`http://www.google.com/search?btnG=1&pws=0&q=${text}`);
 });
+
+// function onScanSuccess(decodedText, decodedResult) {
+//   // handle the scanned code as you like, for example:
+//   console.log(`Code matched = ${decodedText}`, decodedResult);
+// }
+
+// function onScanFailure(error) {
+//   // handle scan failure, usually better to ignore and keep scanning.
+//   // for example:
+//   console.warn(`Code scan error = ${error}`);
+// }
+
+// let html5QrcodeScanner = new Html5QrcodeScanner(
+//   "reader",
+//   { fps: 10, qrbox: { width: 250, height: 250 } },
+//   /* verbose= */ false
+// );
+// html5QrcodeScanner.render(onScanSuccess, onScanFailure);
+
+// --------Scanner------------
+
+// This method will trigger user permissions
+// function test() {
+// let cameraId;
+// Html5Qrcode.getCameras()
+//   .then((devices) => {
+//     /**
+//      * devices would be an array of objects of type:
+//      * { id: "id", label: "label" }
+//      */
+//     if (devices && devices.length) {
+//       cameraId = devices[0].id;
+//       console.log(cameraId);
+//       // .. use this to start scanning.
+//     }
+//   })
+//   .catch((err) => {
+//     // handle err
+//   });
+// }
+
+// after getting camera id, starting camera
+// const html5QrCode = new Html5Qrcode("reader");
+// html5QrCode
+//   .start(
+//     cameraId,
+//     {
+//       fps: 10, // Optional, frame per seconds for qr code scanning
+//       qrbox: { width: 250, height: 250 }, // Optional, if you want bounded box UI
+//     },
+//     (decodedText, decodedResult) => {
+//       console.log("decodedText", decodedText);
+//       console.log("decodedResult", decodedResult);
+//       // do something when code is read
+//     },
+//     (errorMessage) => {
+//       console.log(errorMessage);
+//       // parse error, ignore it.
+//     }
+//   )
+//   .catch((err) => {
+//     console.log(err);
+//     // Start failed, handle it.
+//   });
+
+function test() {
+  // CAMERA ID
+  const html5QrCode = new Html5Qrcode("reader");
+  let cameraId;
+  Html5Qrcode.getCameras()
+    .then((devices) => {
+      /**
+       * devices would be an array of objects of type:
+       * { id: "id", label: "label" }
+       */
+      if (devices && devices.length) {
+        cameraId = devices[0].id;
+        console.log(cameraId);
+        // .. use this to start scanning.
+      }
+    })
+    .catch((err) => {
+      // handle err
+    });
+
+  // const reader = document.getElementById("reader");
+
+  const qrCodeSuccessCallback = (decodedText, decodedResult) => {
+    console.log("decodedText", decodedText);
+    console.log("decodedResult", decodedResult);
+    resultTextArea.innerHTML = decodedText;
+    /* handle success */
+  };
+  const config = {
+    fps: 10,
+    qrbox: { width: 300, height: 300 },
+    aspectRatio: 0.77,
+  };
+  html5QrCode.start(
+    { deviceId: { exact: cameraId } },
+    config,
+    qrCodeSuccessCallback
+  );
+
+  // If you want to prefer front camera
+  // html5QrCode.start({ facingMode: "user" }, config, qrCodeSuccessCallback);
+
+  // If you want to prefer back camera
+  // html5QrCode.start(
+  //   { facingMode: "environment" },
+  //   config,
+  //   qrCodeSuccessCallback
+  // );
+
+  // Select front camera or fail with `OverconstrainedError`.
+  // html5QrCode.start(
+  //   { facingMode: { exact: "user" } },
+  //   config,
+  //   qrCodeSuccessCallback
+  // );
+
+  // Select back camera or fail with `OverconstrainedError`.
+  // html5QrCode.start(
+  //   { facingMode: { exact: "environment" } },
+  //   config,
+  //   qrCodeSuccessCallback
+  // );
+}
+
+const browsingOption = document.querySelector(".browsing-option");
+const cameraAccess = document.querySelector(".fa-camera");
+const galleryAccess = document.querySelector(".fa-file-image");
+cameraAccess.addEventListener("click", (e) => {
+  e.preventDefault();
+  e.stopPropagation();
+
+  img.src = "";
+  img.classList.remove("show");
+  content.classList.remove("show");
+  qrCodeContent.classList.add("show");
+  resultTextArea.innerText = "";
+  dropZone.style.height = "450px";
+  test();
+  cameraAccess.classList.remove("show");
+  galleryAccess.classList.add("show");
+});
+
+galleryAccess.addEventListener("click", browseImage);
