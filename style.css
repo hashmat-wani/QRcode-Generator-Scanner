@@ -5,7 +5,7 @@
 .mobile-result {
   /* border: 1px solid blue; */
   display: none;
-  height: calc(100vh - 40px);
+  height: calc(100vh - 70px);
   width: 100%;
   z-index: 100;
   background: #fff;
@@ -663,9 +663,6 @@ nav div.active::before {
     display: none;
   }
 
-  .mobile-result.show {
-    display: none;
-  }
   .qr-code {
     margin-top: 20px;
   }
