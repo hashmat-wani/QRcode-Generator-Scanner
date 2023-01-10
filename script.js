@@ -317,7 +317,7 @@ function fetchRequest(file, formData) {
     .then((result) => {
       result = result[0].symbol[0].data;
       dropZoneText.innerHTML = result
-        ? "Upload QR code to scan"
+        ? "Drag QR Code here or"
         : "Couldn't scan QR Code";
       if (!result) {
         reset();
