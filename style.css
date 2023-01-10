@@ -26,7 +26,7 @@
   justify-content: space-between;
 }
 .mobile-result .details {
-  margin: 20px 0 25px;
+  margin: 20px 0 40px;
   display: flex;
   height: 100%;
   flex-direction: column;
@@ -53,6 +53,8 @@
 
 .result-text {
   height: 150px;
+  /* border: 1px solid red; */
+  height: calc(100vh - 450px);
   overflow-y: scroll;
   text-align: justify;
 }
@@ -63,6 +65,7 @@
 }
 
 .actions {
+  /* border: 1px solid blue; */
   display: flex;
   flex-direction: column;
   row-gap: 10px;
