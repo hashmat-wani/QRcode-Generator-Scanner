@@ -3,7 +3,7 @@
 }
 
 .mobile-result {
-  min-height: 100vh;
+  /* min-height: 100vh; */
   display: none;
   width: 100%;
   z-index: 100;
@@ -18,7 +18,7 @@
   transition: all 0.3s ease;
 }
 .mobile-result.show {
-  display: block !important;
+  display: block;
 }
 
 .qr-result {
@@ -57,10 +57,10 @@
   text-align: justify;
 }
 
-.fa-arrow-left-long {
+/* .fa-arrow-left-long {
   cursor: pointer;
   font-size: 25px;
-}
+} */
 
 .actions {
   display: flex;
@@ -302,7 +302,6 @@ nav div.active::before {
   flex-direction: column;
   background-color: #fff;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-  /* display: none; */
   z-index: 1;
 }
 .custom-dropdown .options .option {
@@ -513,14 +512,17 @@ nav div.active::before {
   gap: 20px;
   display: none;
 }
+.dropzone .content.show {
+  display: flex;
+}
 .dropzone img {
   width: 100%;
   height: 350px;
   object-fit: cover;
   display: none;
 }
-.show {
-  display: flex !important;
+.dropzone img.show {
+  display: block;
 }
 .dropzone .btn {
   width: 50%;
@@ -535,6 +537,9 @@ nav div.active::before {
   text-transform: uppercase;
   background-color: var(--primary-clr);
 }
+/* .show {
+  display: flex !important;
+} */
 
 /*------------ RIGHT-RESULT ----------*/
 
@@ -592,7 +597,7 @@ nav div.active::before {
   display: none;
 }
 #reader.show {
-  display: block;
+  display: flex;
 }
 
 .browsing-option {
@@ -651,8 +656,8 @@ nav div.active::before {
   #scanner-container {
     border: 1px solid red;
     height: calc(100vh - 43px);
-    /* padding: 20px 0 0; */
-    /* margin: 0; */
+    /* height: 100vh; */
+    /* padding: 200px 0 0; */
   }
   #scanner-container .right {
     display: none;
@@ -671,8 +676,8 @@ nav div.active::before {
   }
 }
 
-.footer {
-  /* border: 1px solid red; */
+/* .footer {
+  border: 1px solid red;
   padding: 0 5px;
   width: 100%;
 }
@@ -687,18 +692,18 @@ nav div.active::before {
   column-gap: 15px;
   margin-top: 20px;
   padding: 10px 0;
-}
+} */
 
-.fa:hover {
+/* .fa:hover {
   transform: scale(0.9, 0.9);
-}
-.fa {
+} */
+/* .fa {
   color: var(--primary-clr);
   font-size: 20px;
   padding-top: 4px;
   cursor: pointer;
-}
-.footer_bottom {
+} */
+/* .footer_bottom {
   text-align: center;
   border-top: 1px solid var(--primary-clr);
   font-size: x-small;
@@ -707,4 +712,4 @@ nav div.active::before {
   color: gray;
   margin: 0 70px;
   padding-top: 10px;
-}
+}  */

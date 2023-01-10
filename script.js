@@ -1,5 +1,6 @@
 let bodyWidth = document.querySelector("body").clientWidth;
 let mobileView = bodyWidth > 768 ? false : true;
+console.log(mobileView);
 
 let isScanning = false;
 
@@ -449,6 +450,7 @@ cameraAccess.addEventListener("click", startCamera);
 function startCamera(e) {
   e.preventDefault();
   e.stopPropagation();
+  cameraAccess.classList.remove("show");
   dropZone.style.height = "450px";
   dropZone.style.border = "none";
   scanReader.classList.add("show");
@@ -459,7 +461,6 @@ function startCamera(e) {
   img.classList.remove("show");
   content.classList.remove("show");
   resultTextArea.innerText = "";
-  cameraAccess.classList.remove("show");
   scannerOptions.classList.add("show");
 }
 
