@@ -52,7 +52,9 @@
 }
 
 .result-text {
+  min-height: 100px;
   max-height: calc(100vh - 465px);
+  border: 1px solid red;
   overflow-y: auto;
   text-align: justify;
 }
