@@ -3,13 +3,13 @@
 }
 
 .mobile-result {
-  border: 2px solid blue;
-  height: max(calc(100vh - 30px), 100vw);
+  /* border: 2px solid blue; */
+  height: max(100vh, 100vw);
   display: none;
   width: 100%;
   z-index: 100;
   background: #fff;
-  padding: 20px;
+  /* padding: 20px; */
   position: absolute;
   top: 0;
   left: 0;
@@ -22,6 +22,7 @@
 
 .qr-result {
   height: 100%;
+  /* border: 2px solid red; */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
