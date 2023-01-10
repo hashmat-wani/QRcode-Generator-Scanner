@@ -4,12 +4,12 @@
 
 .mobile-result {
   /* border: 2px solid blue; */
-  height: max(100vh, 100vw);
+  /* height: max(100vh, 100vw); */
   display: none;
   width: 100%;
   z-index: 100;
   background: #fff;
-  /* padding: 20px; */
+  padding: 20px;
   position: absolute;
   top: 0;
   left: 0;
@@ -21,8 +21,9 @@
 }
 
 .qr-result {
-  height: calc(100% -100);
-  /* border: 2px solid red; */
+  /* height: clac(100% - 130); */
+  /* height: 100%; */
+  border: 2px solid red;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -30,7 +31,6 @@
 .mobile-result .details {
   margin: 20px 0 40px;
   display: flex;
-  height: 100%;
   flex-direction: column;
   row-gap: 40px;
 }
@@ -54,8 +54,6 @@
 }
 
 .result-text {
-  height: 150px;
-  /* border: 1px solid red; */
   height: calc(100vh - 450px);
   overflow-y: scroll;
   text-align: justify;
@@ -659,7 +657,7 @@ nav div.active::before {
     width: 100%;
   }
   #scanner-container {
-    height: 100vh;
+    height: calc(100vh - 43px);
   }
   #scanner-container .right {
     display: none;
