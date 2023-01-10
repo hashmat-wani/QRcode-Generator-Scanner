@@ -1,6 +1,5 @@
 let bodyWidth = document.querySelector("body").clientWidth;
 let mobileView = bodyWidth > 768 ? false : true;
-console.log(mobileView);
 
 let isScanning = false;
 
@@ -396,10 +395,10 @@ document.querySelectorAll(".open").forEach((el, idx) => {
 
 const html5QrCode = new Html5Qrcode("reader");
 function scan() {
-  console.log("now done");
   isScanning = true;
   const qrCodeSuccessCallback = (decodedText, decodedResult) => {
     /* handle success */
+    // console.log(decodedText);
     let beep = new Audio("./scan-beep.wav");
     beep.volume = 0.05;
     beep.play();
@@ -429,7 +428,10 @@ function scan() {
 
   const config = {
     fps: 10,
-    qrbox: { width: 250, height: 250 },
+
+    qrbox: mobileView
+      ? { width: 250, height: 250 }
+      : { width: 325, height: 325 },
     aspectRatio: mobileView ? 450 / 350 : 350 / 450,
   };
 
@@ -458,7 +460,6 @@ function startCamera(e) {
   scanReader.classList.add("show");
   scanReader.style.width = "100%";
   scanReader.style.height = "100%";
-
   img.src = "";
   img.classList.remove("show");
   content.classList.remove("show");
