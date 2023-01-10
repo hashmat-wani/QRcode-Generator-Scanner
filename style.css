@@ -4,7 +4,7 @@
 
 .mobile-result {
   /* border: 2px solid blue; */
-  /* height: max(100vh, 100vw); */
+  height: max(100vh, 100vw);
   display: none;
   width: 100%;
   z-index: 100;
@@ -21,7 +21,7 @@
 }
 
 .qr-result {
-  /* height: clac(100% - 130); */
+  height: calc(100% - 30px);
   /* height: 100%; */
   border: 2px solid red;
   display: flex;
@@ -54,8 +54,8 @@
 }
 
 .result-text {
-  height: calc(100vh - 450px);
-  overflow-y: scroll;
+  max-height: calc(100vh - 490px);
+  overflow-y: auto;
   text-align: justify;
 }
 
