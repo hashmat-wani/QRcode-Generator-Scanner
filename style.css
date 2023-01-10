@@ -3,7 +3,8 @@
 }
 
 .mobile-result {
-  height: max(100vh, 100vw);
+  border: 2px solid blue;
+  height: max(calc(100vh - 30px), 100vw);
   display: none;
   width: 100%;
   z-index: 100;
