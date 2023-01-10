@@ -431,7 +431,7 @@ function scan() {
 
     qrbox: mobileView
       ? { width: 250, height: 250 }
-      : { width: 325, height: 325 },
+      : { width: 315, height: 315 },
     aspectRatio: mobileView ? 450 / 350 : 350 / 450,
   };
 
