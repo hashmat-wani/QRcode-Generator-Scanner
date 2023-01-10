@@ -490,3 +490,35 @@ function quitScan(e) {
     reset();
   });
 }
+
+var button = document.getElementById("flashlight-button");
+var flashlightOn = false;
+
+if ("ondevicelight" in window) {
+  // Save the current device light level
+  var currentLightLevel;
+  window.addEventListener("devicelight", function (event) {
+    currentLightLevel = event.value;
+  });
+
+  button.addEventListener("click", function () {
+    if (flashlightOn) {
+      // If the flashlight is currently on, turn it off
+      window.removeEventListener("devicelight", turnOnFlashlight);
+      button.innerHTML = "Turn flashlight on";
+    } else {
+      // If the flashlight is currently off, turn it on
+      window.addEventListener("devicelight", turnOnFlashlight);
+      button.innerHTML = "Turn flashlight off";
+    }
+    flashlightOn = !flashlightOn;
+  });
+
+  function turnOnFlashlight(event) {
+    event.value = currentLightLevel + 100;
+  }
+} else {
+  // The device doesn't support the DeviceLightEvent API
+  button.innerHTML = "Flashlight not supported";
+  button.disabled = true;
+}
