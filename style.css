@@ -54,7 +54,6 @@
 .result-text {
   min-height: 100px;
   max-height: calc(100vh - 465px);
-  border: 1px solid red;
   overflow-y: auto;
   text-align: justify;
 }
@@ -678,8 +677,8 @@ nav div.active::before {
   }
 }
 
-/* .footer {
-  border: 1px solid red;
+.footer {
+  /* border: 1px solid red; */
   padding: 0 5px;
   width: 100%;
 }
@@ -694,18 +693,19 @@ nav div.active::before {
   column-gap: 15px;
   margin-top: 20px;
   padding: 10px 0;
-} */
+}
 
-/* .fa:hover {
+.fa:hover {
   transform: scale(0.9, 0.9);
-} */
-/* .fa {
+}
+.footer .fa-solid,
+.fa-brands {
   color: var(--primary-clr);
-  font-size: 20px;
+  font-size: 25px;
   padding-top: 4px;
   cursor: pointer;
-} */
-/* .footer_bottom {
+}
+.footer_bottom {
   text-align: center;
   border-top: 1px solid var(--primary-clr);
   font-size: x-small;
@@ -714,4 +714,4 @@ nav div.active::before {
   color: gray;
   margin: 0 70px;
   padding-top: 10px;
-}  */
+}

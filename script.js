@@ -396,6 +396,7 @@ document.querySelectorAll(".open").forEach((el, idx) => {
 
 const html5QrCode = new Html5Qrcode("reader");
 function scan() {
+  console.log("now done");
   isScanning = true;
   const qrCodeSuccessCallback = (decodedText, decodedResult) => {
     /* handle success */
@@ -453,10 +454,11 @@ function startCamera(e) {
   cameraAccess.classList.remove("show");
   dropZone.style.height = "450px";
   dropZone.style.border = "none";
+  scan();
   scanReader.classList.add("show");
   scanReader.style.width = "100%";
   scanReader.style.height = "100%";
-  scan();
+
   img.src = "";
   img.classList.remove("show");
   content.classList.remove("show");
