@@ -4,6 +4,8 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="./logos/tabIcon.png" type="image/png" />
+
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
@@ -21,11 +23,6 @@
       src="https://unpkg.com/html5-qrcode"
       type="text/javascript"
     ></script>
-
-    <!-- <script
-      src="https://kit.fontawesome.com/7213b39e3a.js"
-      crossorigin="anonymous"
-    ></script> -->
   </head>
   <body>
     <!-- wrapper -->
@@ -60,8 +57,13 @@
       </div>
 
       <nav>
-        <div class="active" id="generator">Generator</div>
-        <div id="scanner">Scanner</div>
+        <div class="active" id="generator">
+          Generator &nbsp; <i class="fa-solid fa-qrcode"></i>
+        </div>
+        <div id="scanner">
+          Scanner &nbsp;
+          <i class="fa-solid fa-vector-square"></i>
+        </div>
       </nav>
 
       <div class="container active" id="generator-container">

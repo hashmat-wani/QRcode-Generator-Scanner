@@ -695,15 +695,17 @@ nav div.active::before {
   padding: 10px 0;
 }
 
-.fa:hover {
-  transform: scale(0.9, 0.9);
-}
 .footer .fa-solid,
 .fa-brands {
   color: var(--primary-clr);
   font-size: 25px;
   padding-top: 4px;
   cursor: pointer;
+}
+
+.footer .fa-solid:hover,
+.fa-brands:hover {
+  transform: scale(0.9, 0.9);
 }
 .footer_bottom {
   text-align: center;
